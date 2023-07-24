@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\Home\BannerSectionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 Route::get('/dashboard', function () {
@@ -31,6 +32,11 @@ Route::controller(AdminProfileController::class)->group(function(){
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/store/profile', 'storeProfile')->name('store.profile');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
+});
+
+Route::controller(BannerSectionController::class)->group(function(){
+    Route::get('/home/banner', 'HomeBanner')->name('home.banner');
+    Route::post('/update/banner', 'UpdateBanner')->name('update.banner');
 });
 
 Route::middleware('auth')->group(function () {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\HomeBanner;
 use Illuminate\Http\Request;
-use Image;
+use Intervention\Image\Facades\Image;
 
 
 class BannerSectionController extends Controller

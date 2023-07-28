@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\Home\AboutContentController;
 use App\Http\Controllers\Home\BannerSectionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,13 @@ Route::controller(AdminProfileController::class)->group(function(){
 Route::controller(BannerSectionController::class)->group(function(){
     Route::get('/home/banner', 'HomeBanner')->name('home.banner');
     Route::post('/update/banner', 'UpdateBanner')->name('update.banner');
+});
+Route::controller(AboutContentController::class)->group(function(){
+    Route::post('/update/about-content', 'UpdateContent')->name('update.about-content');
+    Route::post('/update/multi-image', 'UpdateMultiImage')->name('update.multi-image');
+    Route::get('/edit/multi-image/{id}', 'EditMultiImage')->name('edit.multi-image');
+    Route::get('/delete/multi-image/{id}', 'DeleteMultiImage')->name('delete.multi-image');
+    Route::post('/update/image', 'UpdateImage')->name('update.image');
 });
 
 Route::middleware('auth')->group(function () {
